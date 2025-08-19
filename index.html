@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <title>first scss</title>
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="index.scss" />
+  </head>
+  <body>
+    <div class="container-sm text-center">
+      <div class="px-2 px-sm-0">
+        <h1 class="heading-first">Estimation de reprise de votre voiture</h1>
+      </div>
+      <div
+        class="car-select-box d-flex w-100 flex-column flex-lg-row fix-flex align-items-stretch mt-3"
+      >
+        <div
+          class="select-brand-bg px-2 pt-3 pb-4 py-lg-3 d-flex flex-column justify-content-between"
+        >
+          <h3 class="subheading-second">
+            Sélectionnez la marque de votre véhicule
+          </h3>
+          <form
+            action="/details-vehicule"
+            data-content="Nous vous invitons à choisir la marque de votre véhicule pour commencer votre estimation."
+            data-placement="top"
+            data-toggle="popover"
+            id="js-brands"
+            method="post"
+          >
+            <div
+              id="js-fillBrands"
+              class="list-group list-group-horizontal flex-wrap car-brands"
+            >
+              <button
+                class="list-group-item rounded-0 m-1 brandsList-item d-flex align-items-center justify-content-center"
+                data-value="84"
+              >
+                <img
+                  class="responsive-img logo-icon"
+                  id="84"
+                  src="https://www.reprise.peugeot.fr/build/img/peugeot/brand-renault.jpg"
+                  alt="Renault"
+                /><input
+                  type="radio"
+                  name="brands"
+                  value="84"
+                  class="custom-control-input visually-hidden"
+                /><span class="remove-btn" style="display: none">×</span>
+              </button>
+              <button
+                class="list-group-item rounded-0 m-1 brandsList-item d-flex align-items-center justify-content-center"
+                data-value="82"
+              >
+                <img
+                  class="responsive-img logo-icon"
+                  id="82"
+                  src="https://www.reprise.peugeot.fr/build/img/peugeot/brand-peugeot.jpg"
+                  alt="Peugeot"
+                /><input
+                  type="radio"
+                  name="brands"
+                  value="82"
+                  class="custom-control-input visually-hidden"
+                /><span class="remove-btn" style="display: none">×</span>
+              </button>
+              <button
+                class="list-group-item rounded-0 m-1 brandsList-item d-flex align-items-center justify-content-center"
+                data-value="59"
+              >
+                <img
+                  class="responsive-img logo-icon"
+                  id="59"
+                  src="https://www.reprise.peugeot.fr/build/img/peugeot/brand-citroen.jpg"
+                  alt="Citroën"
+                /><input
+                  type="radio"
+                  name="brands"
+                  value="59"
+                  class="custom-control-input visually-hidden"
+                /><span class="remove-btn" style="display: none">×</span>
+              </button>
+              <button
+                class="list-group-item rounded-0 m-1 brandsList-item d-flex align-items-center justify-content-center"
+                data-value="81"
+              >
+                <img
+                  class="responsive-img logo-icon"
+                  id="81"
+                  src="https://www.reprise.peugeot.fr/build/img/peugeot/brand-opel.jpg"
+                  alt="Opel"
+                /><input
+                  type="radio"
+                  name="brands"
+                  value="81"
+                  class="custom-control-input visually-hidden"
+                /><span class="remove-btn" style="display: none">×</span>
+              </button>
+              <button
+                class="list-group-item rounded-0 m-1 brandsList-item d-flex align-items-center justify-content-center"
+                data-value="92"
+              >
+                <img
+                  class="responsive-img logo-icon"
+                  id="92"
+                  src="https://www.reprise.peugeot.fr/build/img/peugeot/brand-volkswagen.jpg"
+                  alt="Volkswagen"
+                /><input
+                  type="radio"
+                  name="brands"
+                  value="92"
+                  class="custom-control-input visually-hidden"
+                /><span class="remove-btn" style="display: none">×</span>
+              </button>
+              <div class="dropdown">
+                <button
+                  class="list-group-item rounded-0 m-1 brandsList-item plus-icon d-flex align-items-center justify-content-center dropdown-toggle"
+                  type="button"
+                  id="otherBrandsDropdown"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span class="logo-icon">+</span
+                  ><input
+                    type="radio"
+                    name="brands"
+                    value="plus"
+                    class="custom-control-input visually-hidden"
+                  /><span class="remove-btn" style="display: none">×</span>
+                </button>
+                <div
+                  class="dropdown-menu"
+                  aria-labelledby="otherBrandsDropdown"
+                >
+                  <button class="dropdown-item" data-value="10">Audi</button>
+                  <button class="dropdown-item" data-value="11">BMW</button>
+                  <button class="dropdown-item" data-value="12">
+                    Mercedes
+                  </button>
+                  <button class="dropdown-item" data-value="13">Toyota</button>
+                  <button class="dropdown-item" data-value="14">Honda</button>
+                </div>
+              </div>
+            </div>
+            <button
+              class="btn w-100 btn-primary rounded-0 position-relative mt-3"
+              id="js-submit-brands"
+              type="button"
+              disabled
+            >
+              Commencez mon estimation
+            </button>
+          </form>
+        </div>
+        <div
+          class="col-lg-1 p-0 car-select-separator justify-content-center align-items-center"
+        >
+          <div
+            class="d-flex align-items-center justify-content-center text-uppercase"
+          >
+            OU
+          </div>
+        </div>
+        <div
+          class="d-flex flex-column justify-content-between align-items-center select-plate-bg px-2 pt-3 pb-4 py-lg-3"
+        >
+          <h3 class="subheading-second">
+            Saisissez l’immatriculation de votre véhicule
+          </h3>
+          <form
+            action="/details-vehicule"
+            data-content="Nous vous invitons à saisir votre plaque d'immatriculation pour réaliser votre estimation."
+            data-placement="top"
+            data-toggle="popover"
+            id="js-plate"
+            method="post"
+          >
+            <div class="input-group custom-plate">
+              <div
+                class="input-group-prepend d-flex flex-column align-items-center justify-content-between"
+              >
+                <span class="plate-icon"></span>
+                <span class="input-group-text border-0 rounded-0">FR</span>
+              </div>
+              <input
+                aria-label=""
+                class="form-control custom-input-plate border-0"
+                name="registration"
+                placeholder="AB-123-CD"
+                type="text"
+                data-regex="^[a-zA-Z]{2}-?[0-9]{3}-?[a-zA-Z]{2}$"
+                id="plate-input"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text border-0 rounded-0"></span>
+              </div>
+            </div>
+            <div
+              id="plate-error"
+              class="text-danger mt-1"
+              style="display: none"
+            >
+              L'immatriculation n'existe pas !
+            </div>
+          </form>
+          <button
+            class="btn w-100 btn-primary rounded-0 position-relative mt-3"
+            id="js-submit-plate"
+            type="submit"
+            disabled
+          >
+            Commencez mon estimation
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const buttons = document.querySelectorAll(
+          "#js-fillBrands .brandsList-item"
+        );
+        const dropdownItems = document.querySelectorAll(".dropdown-item");
+        const removeButtons = document.querySelectorAll(".remove-btn");
+        const submitBrands = document.getElementById("js-submit-brands");
+        let selectedButton = null;
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            e.preventDefault();
+            const radio = button.querySelector(".custom-control-input");
+            const removeBtn = button.querySelector(".remove-btn");
+            if (selectedButton && selectedButton !== button) {
+              selectedButton.querySelector(
+                ".custom-control-input"
+              ).checked = false;
+              selectedButton.classList.remove("selected");
+              selectedButton.querySelector(".remove-btn").style.display =
+                "none";
+            }
+            radio.checked = !radio.checked;
+            if (radio.checked) {
+              button.classList.add("selected");
+              removeBtn.style.display = "block";
+              selectedButton = button;
+              submitBrands.disabled = false;
+            } else {
+              button.classList.remove("selected");
+              removeBtn.style.display = "none";
+              selectedButton = null;
+              submitBrands.disabled = true;
+            }
+          });
+        });
+
+        dropdownItems.forEach((item) => {
+          item.addEventListener("click", (e) => {
+            e.preventDefault();
+            const value = item.getAttribute("data-value");
+            const radio = document.querySelector(
+              `#otherBrandsDropdown input[name="brands"]`
+            );
+            const removeBtn = document.querySelector(
+              `#otherBrandsDropdown .remove-btn`
+            );
+            if (selectedButton) {
+              selectedButton.querySelector(
+                ".custom-control-input"
+              ).checked = false;
+              selectedButton.classList.remove("selected");
+              selectedButton.querySelector(".remove-btn").style.display =
+                "none";
+            }
+            radio.value = value;
+            radio.checked = true;
+            document
+              .querySelector("#otherBrandsDropdown")
+              .classList.add("selected");
+            removeBtn.style.display = "block";
+            selectedButton = document.querySelector("#otherBrandsDropdown");
+            submitBrands.disabled = false;
+          });
+        });
+
+        removeButtons.forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            const button = btn.parentElement;
+            const radio = button.querySelector(".custom-control-input");
+            radio.checked = false;
+            button.classList.remove("selected");
+            btn.style.display = "none";
+            selectedButton = null;
+            submitBrands.disabled = true;
+          });
+        });
+
+        submitBrands.addEventListener("click", () => {
+          if (selectedButton) {
+            const brandValue = selectedButton.querySelector(
+              "input[name='brands']"
+            ).value;
+            window.location.href = `/details-vehicule.html?brand=${encodeURIComponent(
+              brandValue
+            )}`;
+          }
+        });
+
+        const plateInput = document.getElementById("plate-input");
+        const errorDiv = document.getElementById("plate-error");
+        const submitPlate = document.getElementById("js-submit-plate");
+
+        plateInput.addEventListener("input", () => {
+          const regex = new RegExp(plateInput.dataset.regex);
+          if (plateInput.value && !regex.test(plateInput.value)) {
+            errorDiv.style.display = "block";
+            submitPlate.disabled = true;
+          } else {
+            errorDiv.style.display = "none";
+            submitPlate.disabled = plateInput.value.trim() === "";
+          }
+        });
+
+        submitPlate.addEventListener("click", (e) => {
+          if (!submitPlate.disabled) {
+            const plateValue = plateInput.value.trim();
+            window.location.href = `/details-vehicule.html?plate=${encodeURIComponent(
+              plateValue
+            )}`;
+            e.preventDefault();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

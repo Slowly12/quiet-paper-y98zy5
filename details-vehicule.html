@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox - Détails Véhicule</title>
+    <meta charset="UTF-8" />
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-PDle/QlgIONtM1aqA2Qemk5gPOE7wFq8+Em+G/hmo5Iq0CCmYZLv3fVRDJ4MMwEA"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="index.scss" />
+  </head>
+  <body>
+    <div class="container-sm text-center">
+      <div class="px-2 px-sm-0">
+        <h1 class="heading-first">Détails de votre véhicule</h1>
+      </div>
+      <div
+        class="select-details-bg px-2 pt-3 pb-4 py-lg-3 d-flex flex-column justify-content-between mt-3"
+      >
+        <h3 class="subheading-second">Informations basées sur votre choix</h3>
+        <div class="vehicle-info mt-3 text-left">
+          <p>
+            <span
+              class="oi oi-license"
+              style="font-size: 24px; margin-right: 10px"
+            ></span
+            ><strong style="font-size: 24px">Immatriculation :</strong>
+            <span id="plate" style="font-size: 24px; font-weight: bold"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-car"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Marque :</strong> <span id="brand"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-document"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Modèle :</strong> <span id="model"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-wrench"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Boîte :</strong> <span id="gearbox"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-calendar"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>1ère Immatriculation :</strong>
+            <span id="firstRegistration"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-bolt"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Énergie :</strong> <span id="fuel"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-speedometer"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Puissance DIN :</strong> <span id="powerDin"></span> ch
+          </p>
+          <p>
+            <span
+              class="oi oi-calculator"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Puissance Fiscale :</strong>
+            <span id="powerFiscal"></span> CV
+          </p>
+          <p>
+            <span
+              class="oi oi-shape-rectangle"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Silhouette :</strong> <span id="silhouette"></span>
+          </p>
+          <p>
+            <span
+              class="oi oi-door"
+              style="font-size: 16px; margin-right: 5px"
+            ></span
+            ><strong>Portes :</strong> <span id="doors"></span>
+          </p>
+        </div>
+        <div class="mt-4">
+          <div class="d-flex justify-content-between mb-3">
+            <button class="btn btn-secondary" id="js-precedent">
+              Précédent
+            </button>
+            <button class="btn btn-primary" id="js-continuer">Continuer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const brandValue = urlParams.get("brand");
+        const plateValue = urlParams.get("plate");
+        const brandElement = document.getElementById("brand");
+        const modelElement = document.getElementById("model");
+        const gearboxElement = document.getElementById("gearbox");
+        const firstRegistrationElement =
+          document.getElementById("firstRegistration");
+        const fuelElement = document.getElementById("fuel");
+        const powerDinElement = document.getElementById("powerDin");
+        const powerFiscalElement = document.getElementById("powerFiscal");
+        const silhouetteElement = document.getElementById("silhouette");
+        const doorsElement = document.getElementById("doors");
+        const plateElement = document.getElementById("plate");
+
+        if (brandValue) {
+          const brandData = {
+            84: {
+              brand: "Renault",
+              model: "Clio",
+              gearbox: "Manuelle",
+              firstRegistration: "01/2020",
+              fuel: "Essence",
+              powerDin: "90",
+              powerFiscal: "5",
+              silhouette: "Berline",
+              doors: "5",
+            },
+            82: {
+              brand: "Peugeot",
+              model: "208",
+              gearbox: "Automatique",
+              firstRegistration: "03/2020",
+              fuel: "Diesel",
+              powerDin: "100",
+              powerFiscal: "6",
+              silhouette: "Hatchback",
+              doors: "5",
+            },
+            59: {
+              brand: "Citroën",
+              model: "C3",
+              gearbox: "Manuelle",
+              firstRegistration: "06/2021",
+              fuel: "Essence",
+              powerDin: "82",
+              powerFiscal: "4",
+              silhouette: "Berline",
+              doors: "5",
+            },
+            81: {
+              brand: "Opel",
+              model: "Corsa",
+              gearbox: "Manuelle",
+              firstRegistration: "09/2019",
+              fuel: "Essence",
+              powerDin: "75",
+              powerFiscal: "4",
+              silhouette: "Hatchback",
+              doors: "3",
+            },
+            92: {
+              brand: "Volkswagen",
+              model: "Golf",
+              gearbox: "Automatique",
+              firstRegistration: "04/2020",
+              fuel: "Diesel",
+              powerDin: "110",
+              powerFiscal: "6",
+              silhouette: "Berline",
+              doors: "5",
+            },
+            plus: {
+              brand: "Autre",
+              model: "Non spécifié",
+              gearbox: "N/A",
+              firstRegistration: "N/A",
+              fuel: "N/A",
+              powerDin: "N/A",
+              powerFiscal: "N/A",
+              silhouette: "N/A",
+              doors: "N/A",
+            },
+            10: {
+              brand: "Audi",
+              model: "A3",
+              gearbox: "Automatique",
+              firstRegistration: "02/2021",
+              fuel: "Essence",
+              powerDin: "150",
+              powerFiscal: "7",
+              silhouette: "Berline",
+              doors: "4",
+            },
+            11: {
+              brand: "BMW",
+              model: "1 Series",
+              gearbox: "Automatique",
+              firstRegistration: "05/2020",
+              fuel: "Diesel",
+              powerDin: "116",
+              powerFiscal: "6",
+              silhouette: "Hatchback",
+              doors: "5",
+            },
+            12: {
+              brand: "Mercedes",
+              model: "C-Class",
+              gearbox: "Automatique",
+              firstRegistration: "08/2019",
+              fuel: "Essence",
+              powerDin: "184",
+              powerFiscal: "9",
+              silhouette: "Berline",
+              doors: "4",
+            },
+            13: {
+              brand: "Toyota",
+              model: "Corolla",
+              gearbox: "Manuelle",
+              firstRegistration: "03/2021",
+              fuel: "Hybride",
+              powerDin: "122",
+              powerFiscal: "5",
+              silhouette: "Berline",
+              doors: "5",
+            },
+            14: {
+              brand: "Honda",
+              model: "Civic",
+              gearbox: "Manuelle",
+              firstRegistration: "07/2020",
+              fuel: "Essence",
+              powerDin: "126",
+              powerFiscal: "6",
+              silhouette: "Hatchback",
+              doors: "5",
+            },
+          };
+          const data = brandData[brandValue] || {
+            brand: "Inconnu",
+            model: "Inconnu",
+            gearbox: "N/A",
+            firstRegistration: "N/A",
+            fuel: "N/A",
+            powerDin: "N/A",
+            powerFiscal: "N/A",
+            silhouette: "N/A",
+            doors: "N/A",
+          };
+          brandElement.textContent = data.brand;
+          modelElement.textContent = data.model;
+          gearboxElement.textContent = data.gearbox;
+          firstRegistrationElement.textContent = data.firstRegistration;
+          fuelElement.textContent = data.fuel;
+          powerDinElement.textContent = data.powerDin;
+          powerFiscalElement.textContent = data.powerFiscal;
+          silhouetteElement.textContent = data.silhouette;
+          doorsElement.textContent = data.doors;
+          plateElement.textContent = "N/A";
+        } else if (plateValue) {
+          const plateData = {
+            "AB-123-CD": {
+              brand: "Peugeot",
+              model: "208",
+              gearbox: "Automatique",
+              firstRegistration: "03/2020",
+              fuel: "Diesel",
+              powerDin: "100",
+              powerFiscal: "6",
+              silhouette: "Hatchback",
+              doors: "5",
+            },
+            "XY-456-EF": {
+              brand: "Renault",
+              model: "Clio",
+              gearbox: "Manuelle",
+              firstRegistration: "07/2021",
+              fuel: "Essence",
+              powerDin: "90",
+              powerFiscal: "5",
+              silhouette: "Berline",
+              doors: "5",
+            },
+            "AZ-123-ZZ": {
+              brand: "Citroën",
+              model: "C3",
+              gearbox: "Manuelle",
+              firstRegistration: "06/2021",
+              fuel: "Essence",
+              powerDin: "82",
+              powerFiscal: "4",
+              silhouette: "Berline",
+              doors: "5",
+            },
+          };
+          const data = plateData[plateValue] || {
+            brand: "Inconnu",
+            model: "Inconnu",
+            gearbox: "N/A",
+            firstRegistration: "N/A",
+            fuel: "N/A",
+            powerDin: "N/A",
+            powerFiscal: "N/A",
+            silhouette: "N/A",
+            doors: "N/A",
+          };
+          brandElement.textContent = data.brand;
+          modelElement.textContent = data.model;
+          gearboxElement.textContent = data.gearbox;
+          firstRegistrationElement.textContent = data.firstRegistration;
+          fuelElement.textContent = data.fuel;
+          powerDinElement.textContent = data.powerDin;
+          powerFiscalElement.textContent = data.powerFiscal;
+          silhouetteElement.textContent = data.silhouette;
+          doorsElement.textContent = data.doors;
+          plateElement.textContent = plateValue;
+        } else {
+          brandElement.textContent = "Inconnu";
+          modelElement.textContent = "Inconnu";
+          gearboxElement.textContent = "N/A";
+          firstRegistrationElement.textContent = "N/A";
+          fuelElement.textContent = "N/A";
+          powerDinElement.textContent = "N/A";
+          powerFiscalElement.textContent = "N/A";
+          silhouetteElement.textContent = "N/A";
+          doorsElement.textContent = "N/A";
+          plateElement.textContent = "N/A";
+          window.location.href = "/";
+        }
+
+        document
+          .getElementById("js-precedent")
+          .addEventListener("click", () => {
+            window.location.href = "/";
+          });
+        document
+          .getElementById("js-continuer")
+          .addEventListener("click", () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const brand = urlParams.get("brand");
+            const plate = urlParams.get("plate");
+            if (brand) {
+              window.location.href = `/estimation.html?brand=${encodeURIComponent(
+                brand
+              )}`;
+            } else if (plate) {
+              window.location.href = `/estimation.html?plate=${encodeURIComponent(
+                plate
+              )}`;
+            } else {
+              window.location.href = "/estimation.html";
+            }
+          });
+      });
+    </script>
+  </body>
+</html>
